@@ -2,29 +2,45 @@ import java.util.NoSuchElementException;
 
 import java.util.Iterator;
 
+/** 
+* This class is an Iterator for a LinkedList.
+* @author Sam Scherl
+* @version 11/19/15
+*/
 public class LinkedListIterator<E> implements Iterator<E>
 {
-	private LinkedList<E> linkedList;
+	/** The current ListNode within the LinkedList. */
+	private ListNode<E> curr;
 	
-	private int current;
-	
-	public LinkedListIterator(LinkedList<E> l)
+	/**
+	* A Constructor which sets linkedList to the given LinkedList and initializes current as 0.
+	* @param l		the LinkedList which will be Iterated.
+	*/
+	public LinkedListIterator(ListNode<E> l)
 	{
-		linkedList = l;
-		current = 0;
+		curr = l;
 	}
 	
+	/**
+	* Returns true if there are more Objects in the LinkedList, false if there are not.
+	* @return		 true if there are more Objects in the LinkedList, false if there are not
+	*/
 	public boolean hasNext()
 	{
-		return (current < linkedList.size());
+		return (curr != null);
 	}
 	
+	/**
+	* Returns the next value within the LinkedList.
+	* @return		the next value within the LinkedList
+	*/
 	public E next()
 	{
 		if (!hasNext())
 			throw new NoSuchElementException();
-		current += 1;
-		return linkedList.get(current - 1);		
+		E holder = curr.getValue();
+		curr = curr.getNext();
+		return holder;
 	}
 }
 

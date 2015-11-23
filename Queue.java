@@ -7,4 +7,6 @@ public interface Queue<E>
 	E peek();
 	
 	boolean isEmpty();
+	
+	String toString();
 }

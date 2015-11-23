@@ -7,4 +7,6 @@ public interface Stack<E>
 	E peek();
 	
 	boolean isEmpty();
+	
+	String toString();
 }
